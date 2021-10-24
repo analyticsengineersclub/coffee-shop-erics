@@ -1,3 +1,8 @@
+{{ config(
+    materialized='table'
+) }}
+
+
 with 
 order_agg as
 (
