@@ -19,14 +19,12 @@ models:
         description: name of the customer
         tests:
           - not_null
-          - unique
 
       - name: email
         description: email address of the customer
         tests:
           - not_null
-          - unique
-          
+
       - name: min_order_at
         description: earliest order of the customer
         tests:
