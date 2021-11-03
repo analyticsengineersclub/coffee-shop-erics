@@ -10,5 +10,5 @@ FROM
 select
 *
 from date_spine
-left join {{ ref('customers') }} cust
+inner join {{ ref('customers') }} cust
 on date_spine.date_snapshot = cast(date_trunc(cust.min_order_at, month) as date)
