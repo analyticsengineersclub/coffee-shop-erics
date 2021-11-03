@@ -1,3 +1,8 @@
+{{ config(
+    materialized='table'
+) }}
+
+
 with min_vis_id as
 (
     select 
