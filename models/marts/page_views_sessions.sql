@@ -8,7 +8,7 @@ with minutes_calc as
     select
       pv.*
     , round(timestamp_diff(timestamp,lag(pv.timestamp) over (partition by visitor_id order by timestamp asc), second) / 60, 2) minutes_diff
-    from {{ ref('page_views_visitor_stitch')}} pv
+    from {{ ref('page_views_visitor_stitch') }} pv
 )
 
 , new_session_flag as

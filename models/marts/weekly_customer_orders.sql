@@ -32,7 +32,7 @@ with week_spine_base as
     , customer_id
     , count(*) over (partition by customer_id order by weekly_snapshots asc) week
     from week_spine
-    cross join {{ ref('customers')}} customers
+    cross join {{ ref('customers') }} customers
     where week_spine.weekly_snapshots >= cast(date_trunc(customers.min_order_at, week) as date)
 )
 
@@ -42,7 +42,7 @@ with week_spine_base as
       cast(date_trunc(created_at, week) as date) weekly_snapshot
     , customer_id
     , sum(total) revenue
-    from {{ source('coffee_shop', 'orders')}}
+    from {{ source('coffee_shop', 'orders') }}
     group by 1,2
 )
 
