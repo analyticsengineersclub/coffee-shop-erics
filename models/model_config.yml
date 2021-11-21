@@ -9,6 +9,7 @@ models:
         tests:
           - unique
           - not_null
+
   - name: monthly_new_customers
     description: New customers by month
     columns:
@@ -42,4 +43,11 @@ models:
         description: number of orders of the customer
         tests:
           - not_null
+
+  - name: page_views_visitor_stitch
+    description: '{{ doc("db_test") }}'
+
+  - name: page_views_sessions
+
+  - name: weekly_customer_orders
           
