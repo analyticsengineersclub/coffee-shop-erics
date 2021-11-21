@@ -6,6 +6,7 @@ sources:
     tables:
       - name: customers
       - name: orders
+
   - name: web_tracking
     project: analytics-engineers-club
     tables:
