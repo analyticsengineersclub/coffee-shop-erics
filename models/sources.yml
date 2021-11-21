@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: coffee_shop
+    project: analytics-engineers-club
+    tables:
+      - name: customers
+      - name: orders
+  - name: web_tracking
+    project: analytics-engineers-club
+    tables:
+      - name: pageviews
+      
