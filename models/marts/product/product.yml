@@ -1,0 +1,7 @@
+version: 2
+
+models:
+  - name: page_views_visitor_stitch
+    description: '{{ doc("db_test") }}'
+
+  - name: page_views_sessions
