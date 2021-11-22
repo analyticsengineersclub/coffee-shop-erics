@@ -30,14 +30,20 @@ with minutes_calc as
     from new_session_flag nsf
 )
 
-select
-  id
-, visitor_id
-, device_type
-, timestamp
-, page
-, customer_id
-, session_id session_id_num
-, visitor_id || "_" ||session_id visitor_id_session_id
-from session_id_sum
+, final as 
+(
+    select
+      id
+    , visitor_id
+    , device_type
+    , timestamp
+    , page
+    , customer_id
+    , session_id session_id_num
+    , visitor_id || "_" ||session_id visitor_id_session_id
+    from session_id_sum
+)
 
+select
+*
+from final

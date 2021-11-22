@@ -14,13 +14,20 @@ with min_vis_id as
     qualify pv_rank = 1
 )
 
+, final as
+(
+    select
+    pv.id
+    ,ifnull(min_vis_id.visitor_id, pv.visitor_id) visitor_id
+    ,pv.device_type
+    ,pv.timestamp
+    ,pv.page
+    ,pv.customer_id
+    from {{ source('web_tracking', 'pageviews') }} pv
+    left join min_vis_id
+    on pv.customer_id = min_vis_id.customer_id
+)
+
 select
-pv.id
-,ifnull(min_vis_id.visitor_id, pv.visitor_id) visitor_id
-,pv.device_type
-,pv.timestamp
-,pv.page
-,pv.customer_id
-from {{ source('web_tracking', 'pageviews') }} pv
-left join min_vis_id
-on pv.customer_id = min_vis_id.customer_id
+*
+from final
