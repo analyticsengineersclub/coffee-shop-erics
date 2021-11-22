@@ -51,3 +51,34 @@ models:
 
   - name: weekly_customer_orders
           
+  - name: fact_order_items
+    description: Individual orderitems w/ relevant keys
+    columns:
+      - name: id
+        description: Primary key of the model
+        tests:
+          - not_null
+      - name: order_id
+        description: Id of the relevant order
+        tests:
+          - not_null
+      - name: product_id
+        description: Id of the product
+        tests:
+          - not_null
+      - name: created_at
+        description: UTC time of creation
+        tests:
+          - not_null
+      - name: customer_id
+        description: Id of the customer
+        tests:
+          - not_null
+      - name: product_price_id
+        description: Id of the price of the product
+        tests:
+          - not_null
+      - name: price
+        description: Price of the product at the time of sale
+        tests:
+          - not_null
