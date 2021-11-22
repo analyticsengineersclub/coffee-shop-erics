@@ -57,6 +57,7 @@ models:
       - name: id
         description: Primary key of the model
         tests:
+          - unique
           - not_null
       - name: order_id
         description: Id of the relevant order
