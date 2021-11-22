@@ -8,7 +8,6 @@ select
 , order_items.product_id
 , orders.created_at
 , orders.customer_id
-, products.id product_id
 , product_prices.id product_price_id
 , product_prices.price
 from {{ source('coffee_shop', 'order_items') }} as order_items
