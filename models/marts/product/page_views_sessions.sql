@@ -8,7 +8,7 @@ with minutes_calc as
     select
       pv.*
     , round(timestamp_diff(timestamp,lag(pv.timestamp) over (partition by visitor_id order by timestamp asc), second) / 60, 2) minutes_diff
-    from {{ ref('page_views_visitor_stitch')}} pv
+    from {{ ref('page_views_visitor_stitch') }} pv
 )
 
 , new_session_flag as
@@ -30,14 +30,20 @@ with minutes_calc as
     from new_session_flag nsf
 )
 
-select
-  id
-, visitor_id
-, device_type
-, timestamp
-, page
-, customer_id
-, session_id session_id_num
-, visitor_id || "_" ||session_id visitor_id_session_id
-from session_id_sum
+, final as 
+(
+    select
+      id
+    , visitor_id
+    , device_type
+    , timestamp
+    , page
+    , customer_id
+    , session_id session_id_num
+    , visitor_id || "_" ||session_id visitor_id_session_id
+    from session_id_sum
+)
 
+select
+*
+from final
