@@ -6,7 +6,7 @@ sources:
     tables:
       - name: customers
       - name: orders
-      - name: orders_items
+      - name: order_items
       - name: products
       - name: product_prices
 
